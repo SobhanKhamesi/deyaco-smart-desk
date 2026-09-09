@@ -12,21 +12,24 @@ export default defineConfig((ctx) => {
     // --> boot files are part of "main.js"
     // https://v2.quasar.dev/quasar-cli-vite/boot-files
     boot: [
-      'i18n'
+      'i18n',
+      'axios',
     ],
 
     // https://v2.quasar.dev/quasar-cli-vite/quasar-config-file#css
     css: [
-      'app.css'
+      'app.css',
+      'quasar-custom.css'
     ],
 
     // https://github.com/quasarframework/quasar/tree/dev/extras
     extras: [
+      'bootstrap-icons',
       // 'ionicons-v4',
       // 'mdi-v7',
-      // 'fontawesome-v7',
-      // 'eva-icons',
-      // 'themify',
+      'fontawesome-v7',
+      'eva-icons',
+      'themify',
       // 'line-awesome',
       // 'roboto-font-latin-ext', // this or either 'roboto-font', NEVER both!
 
@@ -44,7 +47,7 @@ export default defineConfig((ctx) => {
       // https://v2.quasar.dev/quasar-cli-vite/page-routing-with-vue-router#filename-based-routing
       // filenameBasedRouting: true,
 
-      vueRouterMode: 'hash', // available values: 'hash', 'history'
+      vueRouterMode: 'history', // available values: 'hash', 'history'
       // vueRouterBase,
 
       // publicPath: '/',
@@ -53,6 +56,7 @@ export default defineConfig((ctx) => {
       // ignorePublicFolder: true,
       // minify: false,
       // distDir
+      rtl: true, // https://quasar.dev/options/rtl-support
 
       // extendViteConf (viteConf) {},
       // viteVuePluginOptions: {},
@@ -87,10 +91,16 @@ export default defineConfig((ctx) => {
 
     // https://v2.quasar.dev/quasar-cli-vite/quasar-config-file#framework
     framework: {
-      config: {},
+      config: {
+        brand: {
+          primary: '#FE6925',
+          secondary: '#1A1A1A',
+          accent: '#0850A5',
+        }
+      },
 
       // iconSet: 'material-icons', // Quasar icon set
-      // lang: 'en-US', // Quasar language pack
+      lang: 'fa-IR', // Quasar language pack
 
       // For special cases outside of where the auto-import strategy can have an impact
       // (like functional components as one of the examples),
