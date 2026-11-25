@@ -1,32 +1,56 @@
-.q-field--outlined .q-field__control:before, .q-field--focused, .q-field--outlined .q-field__control {
-  border-radius: 10px !important;
+/**
+ * quasar-custom.css
+ * -----------------------------------------------------------------------
+ * Design tokens for the app shell (header + side drawer), sampled directly
+ * from the reference screenshot so colors/sizes match pixel-for-pixel.
+ *
+ * All spacing that has a "left/right" meaning is written with CSS logical
+ * properties (*-inline-start / *-inline-end, text-align: start/end, etc.)
+ * instead of physical left/right. That way the layout is correct for RTL
+ * (Persian) regardless of whether postcss-rtlcss ends up mirroring the
+ * stylesheet — see README-LAYOUT.md, point 1, this matters for this project.
+ * -----------------------------------------------------------------------
+ */
+
+:root {
+    /* Page */
+    --app-bg: #f4f7fa;
+
+    /* Header */
+    --header-bg: #f4f7fa;
+    --header-height: 64px;
+    --header-title-color: #33445e;
+    --header-breadcrumb-color: #8a94a6;
+    --header-border-color: rgba(63, 77, 103, 0.08);
+
+    /* Drawer / side nav */
+    --sidebar-width: 280px;
+    --sidebar-bg: #3f4d67;
+    /* == $secondary in quasar.config.js, kept as a var so both stay in sync */
+    --sidebar-item-color: #aab8d1;
+    --sidebar-item-color-active: #ffffff;
+    --sidebar-item-bg-hover: rgba(255, 255, 255, 0.05);
+    --sidebar-item-bg-active: #333f54;
+    --sidebar-subitem-bg: #39465e;
+    --sidebar-active-bar: #1dc4e9;
+    /* == $primary */
+    --sidebar-divider-color: rgba(255, 255, 255, 0.06);
+    --sidebar-avatar-start: #1dd7d0;
+    --sidebar-avatar-end: #16a3a0;
+
+    /* Header action buttons */
+    --btn-online-bg: #1de9b6;
+    --btn-online-color: #ffffff;
+    --btn-outline-border: #37474f;
+    --btn-outline-color: #3f4d67;
+    --btn-outline-value-color: #f88625;
 }
 
-.q-field--outlined .q-field__control:before {
-  border: 1.5px solid #E4E9F2 !important;
+body {
+    background: var(--app-bg);
 }
 
-.q-field--highlighted .q-field__label {
-  color: #868686 !important;
-  font-style: normal;
-  font-weight: normal;
-}
-
-
-.q-checkbox__bg {
-  background: #FFFFFF;
-  border: 1px solid #E1E1E1;
-  border-radius: 7px;
-}
-
-.q-checkbox__bg .absolute-full, .q-checkbox__bg .fullscreen, .q-checkbox__bg .fixed-full {
-  top: 4px !important;
-  left: 4px !important;
-  width: 10px !important;
-  height: 10px !important;
-}
-
-
-.q-stepper__step-inner{
-  padding-top: 0 !important;
+/* Small shared helper so every drawer row keeps identical spacing rhythm */
+.drawer-item {
+    min-height: 48px;
 }

@@ -1,0 +1,84 @@
+/**
+ * Design tokens (CSS custom properties).
+ *
+ * Components must use these variables (or Quasar's --q-* brand variables)
+ * instead of hard-coded colours/sizes.
+ * Brand colours live in quasar.config.js > framework.config.brand and are
+ * exposed by Quasar as --q-primary, --q-secondary, ...
+ *
+ * Declared on `body` (not :root) because Quasar applies the configured brand
+ * colours as inline variables on <body>; tokens that reference --q-* must be
+ * resolved there to pick them up.
+ *
+ * Use logical properties (margin-inline-start, padding-inline, ...) for any
+ * left/right spacing so styles work in RTL without mirroring.
+ */
+
+body {
+  /* Typography */
+  --font-family-base: IRANSans, Tahoma, sans-serif;
+
+  /* Page */
+  --app-bg: #f4f7fa;
+
+  /* Header */
+  --header-bg: var(--app-bg);
+  --header-height: 64px;
+  --header-title-color: #33445e;
+
+  /* Side drawer */
+  --sidebar-bg: var(--q-secondary);
+  --sidebar-shadow: 1px 0 20px 0 var(--q-secondary);
+  --sidebar-item-color: #aab8d1;
+  --sidebar-item-color-active: #ffffff;
+  --sidebar-item-bg-hover: rgba(255, 255, 255, 0.05);
+  --sidebar-item-bg-active: #333f54;
+  --sidebar-subitem-bg: #39465e;
+  --sidebar-active-bar: #1dc4e9;
+  --sidebar-avatar-start: #1dd7d0;
+  --sidebar-avatar-end: #16a3a0;
+
+  /* Header action buttons */
+  --btn-online-bg: #1de9b6;
+  --btn-online-color: #ffffff;
+  --btn-outline-border: #37474f;
+  --btn-outline-color: #3f4d67;
+
+  /* Dropdown panels (header menus) */
+  --dropdown-header-bg: var(--q-primary);
+  --dropdown-header-color: #ffffff;
+  --dropdown-body-bg: #ffffff;
+  --dropdown-item-color: #888888;
+  --dropdown-shadow: rgba(69, 90, 100, 0.2) 1px 9px 10px 0;
+  --dropdown-radius: 0.2rem;
+
+  /* Smart Desk project cards */
+  --project-card-width: 15rem;
+  --project-card-height: 20rem;
+  --project-card-bg: var(--sidebar-bg);
+  --project-card-color: #ffffff;
+  --project-card-muted-color: #c5c5c5;
+  --project-card-border: #00bbff;
+  --project-avatar-bg: #888888;
+
+  /* Auth pages (login). The intro video background was colour-matched to --auth-bg. */
+  --auth-bg: #110859;
+  --auth-ink: #0b0a55;
+  --auth-on-bg: #ffffff;
+  --auth-link-color: #ed98c7;
+  --auth-card-bg: #f2f1f6;
+  /* Desktop sizes scale with the viewport and hit the design values at 1920px */
+  --auth-layout-gutter: clamp(48px, 8.125vw, 156px);
+  --auth-layout-gap: clamp(24px, 2.5vw, 48px);
+  --auth-card-width: clamp(520px, 31.5vw, 604px);
+  --auth-card-padding-inline: clamp(56px, 6.5625vw, 126px);
+  --auth-card-radius: 44px;
+  --auth-input-bg: #ffffff;
+  --auth-input-height: 56px;
+  --auth-input-radius: 13px;
+  --auth-input-shadow: 0 3px 10px rgba(17, 8, 89, 0.08);
+  --auth-button-bg: var(--auth-bg);
+  --auth-button-color: #ffffff;
+  --auth-button-height: 57px;
+  --auth-button-radius: 15px;
+}

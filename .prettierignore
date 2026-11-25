@@ -1,0 +1,4 @@
+package-lock.json
+dist
+.quasar
+node_modules

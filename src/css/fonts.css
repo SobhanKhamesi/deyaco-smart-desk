@@ -1,0 +1,26 @@
+/* IRANSans — only Light (300), Regular (400) and Medium (500) are bundled.
+   Bolder weights are synthesised by the browser; add a Bold file if needed. */
+
+@font-face {
+  font-family: IRANSans;
+  src: url('../assets/fonts/iransans/IRANSansWeb_Light.woff') format('woff');
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: IRANSans;
+  src: url('../assets/fonts/iransans/IRANSansWeb.woff') format('woff');
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: IRANSans;
+  src: url('../assets/fonts/iransans/IRANSansWeb_Medium.woff') format('woff');
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+}

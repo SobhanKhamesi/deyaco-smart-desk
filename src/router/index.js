@@ -5,32 +5,39 @@ import {
   createWebHashHistory,
   createWebHistory,
 } from 'vue-router'
-
+import { APP_NAME } from '@/config/app.js'
+import { hasSession } from '@/services/auth/session.js'
 import routes from './routes.js'
 
-/*
- * If not building with SSR mode, you can
- * directly export the Router instantiation;
- *
- * The function below can be async too; either use
- * async/await or return a Promise which resolves
- * with the Router instance.
- */
-
-export default defineRouter((/* { store, ssrContext } */) => {
+export default defineRouter(() => {
+  // Router mode/base are configured in quasar.config.js > build
   const createHistory = import.meta.env.QUASAR_SERVER
     ? createMemoryHistory
-    : (import.meta.env.QUASAR_VUE_ROUTER_MODE === 'history' ? createWebHistory : createWebHashHistory)
+    : import.meta.env.QUASAR_VUE_ROUTER_MODE === 'history'
+      ? createWebHistory
+      : createWebHashHistory
 
-  const Router = createRouter({
+  const router = createRouter({
     scrollBehavior: () => ({ left: 0, top: 0 }),
     routes,
-
-    // Leave this as is and make changes in quasar.conf.js instead!
-    // quasar.conf.js -> build -> vueRouterMode
-    // quasar.conf.js -> build -> publicPath
-    history: createHistory(import.meta.env.QUASAR_VUE_ROUTER_BASE)
+    history: createHistory(import.meta.env.QUASAR_VUE_ROUTER_BASE),
   })
 
-  return Router
+  router.beforeEach((to) => {
+    const isSignedIn = hasSession()
+
+    if (to.meta.requiresAuth && !isSignedIn) {
+      return { name: 'login', query: { redirect: to.fullPath } }
+    }
+
+    if (to.meta.guestOnly && isSignedIn) {
+      return { name: 'smart-desk' }
+    }
+  })
+
+  router.afterEach((to) => {
+    document.title = to.meta.title ? `${to.meta.title} | ${APP_NAME}` : APP_NAME
+  })
+
+  return router
 })
